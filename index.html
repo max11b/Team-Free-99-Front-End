@@ -13,38 +13,60 @@
     />
     <!-- CSS file -->
     <link rel="stylesheet" href="./styles.css" />
+    <!-- <video
+      playsinline
+      autoplay
+      muted
+      loop
+      poster="https://www.youtube.com/watch?v=kCyJtitQi_k"
+      id="waVid"
+    >
+      <source type="vide/webm" />
+    </video> -->
     <title>Team Free 99</title>
   </head>
   <body cz-shortcut-listen="true">
-    <div>
+    <div id="title title_container" class="text-center">
       <h1>Pick your next Destination</h1>
+      <!-- <button></button> -->
     </div>
-    <div>
-      <form action="free99">
-        <label for="destination">Destination</label>
-        <input
-          required
-          minlength="2"
-          type="text"
-          id="destination"
-          name="name"
-          placeholder="Enter the name of the destination"
-        />
-        <label for="location">Location</label>
-        <input
-          required
-          minlength="2"
-          type="text"
-          id="location"
-          name="location"
-          placeholder="Where is it located"
-        />
-        <button type="submit" id="myBtn">Find your next destination</button>
-      </form>
+    <div id="first_container">
+      <div class="panel" id="form_container">
+        <form action="free99">
+          <label for="destination">Destination</label>
+          <input
+            required
+            minlength="2"
+            type="text"
+            id="destination"
+            name="name"
+            placeholder="Enter the name of the destination"
+          />
+          <label for="location">Location</label>
+          <input
+            required
+            minlength="2"
+            type="text"
+            id="location"
+            name="location"
+            placeholder="Where is it located"
+          />
+          <button type="submit" id="myBtn">Find your next destination</button>
+        </form>
+      </div>
     </div>
-    <div>
-      <p>Your next destination is one click away</p>
-      <div id="card_container">
+    <div class="text-center panel container" id="second_container">
+      <div id="title">
+        <h1>Your next destination is one click away</h1>
+      </div>
+      <div id="second_container">
+        <div id="list"></div>
+      </div>
+    </div>
+
+    <div class="text-center container" id="final_container">
+      <div id="title"><h1>Select your destination</h1></div>
+      <div id="final_card_container">
         <div id="list"></div>
       </div>
     </div>
