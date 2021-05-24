@@ -4,7 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- CSS file -->
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Team Free 99</title>
   </head>
-  <body></body>
+  <body cz-shortcut-listen="true">
+    <div>
+      <h1>Pick your next Destination</h1>
+    </div>
+    <div>
+      <form action="free99">
+        <label for="destination">Destination</label>
+        <input
+          required
+          minlength="2"
+          type="text"
+          id="destination"
+          name="name"
+          placeholder="Enter the name of the destination"
+        />
+        <label for="location">Location</label>
+        <input
+          required
+          minlength="2"
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Where is it located"
+        />
+        <button type="submit" id="myBtn">Find your next destination</button>
+      </form>
+    </div>
+    <div>
+      <p>Your next destination is one click away</p>
+      <div id="card_container">
+        <div id="list"></div>
+      </div>
+    </div>
+    <!-- Javascript file -->
+    <script src="./script.js"></script>
+  </body>
 </html>
