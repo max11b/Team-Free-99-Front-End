@@ -1,7 +1,10 @@
 html,
 body {
   height: 100%;
-  font-style: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: "brandon_grotesque_regularRg";
+  font-weight: normal;
   background-image: url("https://images.unsplash.com/photo-1599551528722-6b6d968512a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   overflow-y: scroll;
 }
@@ -23,6 +26,7 @@ body {
 }
 #second_container {
   color: rgb(233, 139, 16);
+  display: flex;
   width: 100vw;
   height: 100vh;
 }
