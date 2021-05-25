@@ -1,22 +1,40 @@
 // Use a function to call the backend server.
-document.getElementById("free99").addEventListener("submit", addInitialCards);
+document.getElementById("free99").addEventListener("submit", displayTwentyPics);
 
 let baseUrl = `http://localhost:3000`;
 
+//just testing
+// fetch(`${baseUrl}/test`)
+//     .then((response) => response.json())
+//     .then((pictures) => {
+//         console.log(pictures)
+//     })
+
+
+
 //make a submit function that displays 20 pictures to the user. that sohul be displayed on the second page
-function displayTwentyPics() {
+function displayTwentyPics(e) {
 
-    for(let i=0; i<20; i++) {
-        document.createElement("div").classList.add("card");
-        deleteCard.setAttribute("style", "width:10rem");
-        deleteCard.innerHTML = `<div class="card-body">
-        <img class="card-img-top" src=${destinationDB[index].photo}}>
-            <h4> ${destinationDB[index].location}</h4>
-            </div>`;
+    e.preventDefault()
 
-    document.getElementById("card_Container").appendChild(card);
-    }
-    resetForm();
+    fetch(`${baseUrl}/display20`).then((response) => response.json())
+        .then((pictures) => {
+
+            console.log(pictures)
+
+        })
+
+    // for (let i = 0; i < 20; i++) {
+    //     document.createElement("div").classList.add("card");
+    //     deleteCard.setAttribute("style", "width:10rem");
+    //     deleteCard.innerHTML = `<div class="card-body">
+    //     <img class="card-img-top" src=${destinationDB[index].photo}}>
+    //         <h4> ${destinationDB[index].location}</h4>
+    //         </div>`;
+
+    //     document.getElementById("card_Container").appendChild(card);
+    // }
+    //resetForm();
 }
 
 //make a function that keep traks of the like and dislikes. all the like photos should be added to the firstReviewLikes collection
