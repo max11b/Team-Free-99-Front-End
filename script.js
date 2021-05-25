@@ -3,7 +3,13 @@ document.getElementById("free99").addEventListener("submit", addInitialCards);
 
 let baseUrl = `http://localhost:3000`;
 
+//make a submit function that displays 20 pictures to the user. that sohul be displayed on the second page
 
+//make a function that keep traks of the like and dislikes. all the like photos should be added to the firstReviewLikes collection
+
+//make a function that puts 0-5 photos in the third page, and should be added to the secondReviewLikes collection
+
+//make a function that displays the last image chosen
 
 //this is where we call initial POST from our backend
 async function addInitialCards(e) {
