@@ -4,12 +4,35 @@ document.getElementById("free99").addEventListener("submit", addInitialCards);
 let baseUrl = `http://localhost:3000`;
 
 //make a submit function that displays 20 pictures to the user. that sohul be displayed on the second page
+function displayTwentyPics() {
+
+    for(let i=0; i<20; i++) {
+        document.createElement("div").classList.add("card");
+        deleteCard.setAttribute("style", "width:10rem");
+        deleteCard.innerHTML = `<div class="card-body">
+        <img class="card-img-top" src=${destinationDB[index].photo}}>
+            <h4> ${destinationDB[index].location}</h4>
+            </div>`;
+
+    document.getElementById("card_Container").appendChild(card);
+    }
+    resetForm();
+}
 
 //make a function that keep traks of the like and dislikes. all the like photos should be added to the firstReviewLikes collection
+function likeDislikeTracker() {
+
+}
 
 //make a function that puts 0-5 photos in the third page, and should be added to the secondReviewLikes collection
+function zeroToFivePics() {
+
+}
 
 //make a function that displays the last image chosen
+function selectedLastPic() {
+
+}
 
 //this is where we call initial POST from our backend
 async function addInitialCards(e) {
