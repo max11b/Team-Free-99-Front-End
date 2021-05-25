@@ -13,26 +13,28 @@
     />
     <!-- CSS file -->
     <link rel="stylesheet" href="./styles.css" />
-    <!-- <video
-      playsinline
-      autoplay
-      muted
-      loop
-      poster="https://www.storyblocks.com/video/stock/washington-state-flag-k5fpvyd"
-      id="waVid"
-    >
-      <source type="vide/webm" />
-    </video>
-    -->
+    <!-- Title for our website name -->
     <title>Team Free 99</title>
   </head>
+  <!-- Body needs to have a shortcut to Colorzilla as an extension/add-on. Reference: https://twitter.com/brianpemberton/status/201455628143689728  -->
   <body cz-shortcut-listen="true">
-    <div id="title title_container" class="text-center">
-      <h1 class="sticky-top">Pick your next Destination</h1>
-      <img src="https://media.giphy.com/media/cXVkE2JNKIBqhhiBCZ/giphy.gif" />
+    <!-- Title of the page needs to be in the center and container in order to leave no white space on the webpage -->
+    <div
+      id="title title_container"
+      class="container-fluid d-grid gap-3 align-items-center animated fadeInUp"
+    >
+      <div class="flex-shrink-0">
+        <img
+          class="animated-gif"
+          src="https://media.giphy.com/media/cXVkE2JNKIBqhhiBCZ/giphy.gif"
+        />
+      </div>
+      <div class="text-center">
+        <h1 class="sticky-top">Pick your next Destination</h1>
+      </div>
     </div>
     <div id="first_container">
-      <div class="panel" id="form_container">
+      <div class="panel container align-items-center" id="form_container">
         <form action="" id="free99">
           <label for="destination">Destination</label>
           <input
@@ -60,7 +62,7 @@
     </div>
     <div class="text-center panel container" id="second_container">
       <div id="title">
-        <h1 class="pt-5 mt-5 mb-4 lh-1 fw-bold">
+        <h1 class="pt-5 mt-5 mb-4 lh-1 fw-bold align-items-center">
           Your next destination is one click away
         </h1>
       </div>
@@ -68,13 +70,17 @@
         <div id="list"></div>
       </div>
     </div>
-
-    <div class="text-center container" id="final_container">
-      <div id="title">
-        <h1 class="pt-5 mt-5 mb-4 lh-1 fw-bold">Select your destination</h1>
-      </div>
-      <div id="final_card_container">
-        <div id="list"></div>
+    <div>
+      <div
+        class="text-center panel container align-items-center"
+        id="final_container"
+      >
+        <div id="title">
+          <h1 class="pt-5 mt-5 mb-4 lh-1 fw-bold">Select your destination</h1>
+        </div>
+        <div id="final_card_container form_container">
+          <div id="list"></div>
+        </div>
       </div>
     </div>
     <!-- Javascript file -->
