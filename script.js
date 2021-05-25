@@ -1,5 +1,30 @@
 // Use a function to call the backend server.
-document.getElementById("free99").addEventListener("submit", addCards);
+document.getElementById("free99").addEventListener("submit", addInitialCards);
+
+let baseUrl = `http://localhost:3000`;
+
+
+
+//this is where we call initial POST from our backend
+async function addInitialCards(e) {
+
+    //keep it from refreshing
+    e.preventDefault()
+
+    const userDestinationInput = document.getElementById("destination").value;
+    const userLocationInput = document.getElementById("location").value;
+
+    const response = await fetch(`${baseUrl}/firstReview`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            destination: userDestinationInput,
+            location: userLocationInput
+        })
+    })
+    await response.json()
+    location.reload()
+}
 
 
 
@@ -9,7 +34,7 @@ function handleSubmit(e) {
     const userDestinationInput = document.getElementById("destination").value;
     const userLocationInput = document.getElementById("location").value;
 
-    let url = `${userDestinationInput} ${userLocationInput}`;
+
 
     //fetches backend api
     fetch(url)
