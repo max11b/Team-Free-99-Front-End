@@ -15,6 +15,35 @@ body {
   background-image: url("https://images.unsplash.com/photo-1533422902779-aff35862e462?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
 }
 
+.animated {
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+img.animated-gif {
+  width: 120px;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0 !important;
+}
+
+.gap-3 {
+  gap: 1rem !important;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
 .pt-5 {
   padding-top: 3rem !important;
 }
@@ -38,6 +67,7 @@ body {
   width: 50%;
   height: 100%;
 }
+
 .btn {
   display: inline-block;
   padding: 10px 30px;
@@ -58,12 +88,17 @@ body {
   border-color: #ffffff;
 }
 
-.container {
+.container,
+.container-fluid {
   width: 100%;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+}
+
+.align-items-center {
+  align-items: center !important;
 }
 
 #form_container {
