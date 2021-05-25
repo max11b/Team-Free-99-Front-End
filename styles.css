@@ -1,7 +1,10 @@
 html,
 body {
   height: 100%;
-  font-style: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: "brandon_grotesque_regularRg";
+  font-weight: normal;
   background-image: url("https://images.unsplash.com/photo-1599551528722-6b6d968512a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   overflow-y: scroll;
 }
@@ -11,10 +14,56 @@ body {
   height: 100vh;
   background-image: url("https://images.unsplash.com/photo-1533422902779-aff35862e462?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
 }
+
+.pt-5 {
+  padding-top: 3rem !important;
+}
+.mt-5 {
+  margin-top: 3rem !important;
+}
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.lh-1 {
+  line-height: 1 !important;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
 .panel {
   margin: 20px;
   width: 50%;
   height: 100%;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 30px;
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 1.42857143;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  letter-spacing: 2px;
+  border: 2px solid #666;
+  font-family: "brandon_grotesqueblack";
+  font-weight: normal;
+}
+.btn-light {
+  color: #ffffff;
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #form_container {
@@ -23,11 +72,13 @@ body {
 }
 #second_container {
   color: rgb(233, 139, 16);
+  display: flex;
   width: 100vw;
   height: 100vh;
 }
 
 #final_container {
+  color: rgb(54, 12, 170);
   display: flex;
   width: 100vw;
   height: 100vh;
