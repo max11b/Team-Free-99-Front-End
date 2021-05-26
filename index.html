@@ -13,18 +13,18 @@
       crossorigin="anonymous"
     />
 
+    <!-- Materialize icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
     <!-- CSS file -->
     <link rel="stylesheet" href="./styles.css" />
 
     <!-- Title for our website name -->
     <title>Team Free 99</title>
   </head>
-
-  <!-- Materialize icons -->
-  <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet"
-  />
 
   <!-- Body needs to have a shortcut to Colorzilla as an extension/add-on. Reference: https://twitter.com/brianpemberton/status/201455628143689728  -->
   <body cz-shortcut-listen="true">
@@ -57,7 +57,9 @@
       <div id="outter_container" class="half_block">
         <div class="panel container align_items_center" id="form_container">
           <form action="" id="userInputForm">
-            <label for="destination" class="btn btn_bright">Destination</label>
+            <label for="destination" class="btn btn_bright fw_bold"
+              >Destination</label
+            >
             <input
               required
               minlength="2"
@@ -66,7 +68,9 @@
               name="destination"
               placeholder="Enter the name of the destination"
             />
-            <label for="location" class="btn btn_bright">Location</label>
+            <label for="location" class="btn btn_bright fw_bold"
+              >Location</label
+            >
             <input
               required
               minlength="2"
@@ -75,10 +79,10 @@
               name="location"
               placeholder="Where is it located"
             />
-            <button type="submit" id="myBtn" class="btn btn_light">
+            <button type="click" id="myBtn" class="btn btn_light fw_bold">
               Find your next destination
             </button>
-            <button type="submit" id="done" class="btn btn_light">
+            <button type="click" id="done" class="btn btn_light">
               <i class="large material-icons right">send</i>
             </button>
           </form>
@@ -91,14 +95,8 @@
           class="text-center panel container animated flipInY"
           id="second_container"
         >
+
           <div id="second_container" class="row">
-            <div id="title">
-              <h1 class="pt_5 mt_5 mb_4 lh_1 fw_bold align_items_center">
-                Here are your top destinations
-              </h1>
-            </div>
-            <div id="list_1"></div>
-          </div>
         </div>
       </div>
       <div>

@@ -24,6 +24,11 @@ body {
 .display-flex-row {
   display: flex;
   flex-direction: row;
+  margin-top: 3rem !important;
+  padding-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1 !important;
+  font-weight: 50 !important;
 }
 
 .fluid_container {
