@@ -1,9 +1,37 @@
+display20();
+
+function display20() {
+  let url = `https://project-free99.herokuapp.com/display20`;
+  console.log(url);
+  fetch(url)
+    .then((response) => response.json())
+    .then((FIRST_TWENTY_heroku_list) => {
+      console.log(FIRST_TWENTY_heroku_list);
+
+      for (let index = 0; index < FIRST_TWENTY_heroku_list.length; index++) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.setAttribute("style", "width: 18rem");
+
+        card.innerHTML = `<div class="card-body">
+  <img class="card-img-top" src=${FIRST_TWENTY_heroku_list[index].photo}}>
+      <h6>${FIRST_TWENTY_heroku_list[index].location}</h6>
+      <p class="card-text">${FIRST_TWENTY_heroku_list[index].description}</p>
+      <a href="#" btn_type="edit_btn" class="btn btn-warning" uniqueID="${FIRST_TWENTY_heroku_list[index].id} ">Like</a>
+      <a href="#" btn_type="delete_btn" class="btn btn-danger" uniqueID= "${FIRST_TWENTY_heroku_list[index].id} ">Dislike</a>
+    </div>
+`;
+        document.getElementById("second_container").appendChild(card);
+      }
+    });
+}
+
 // Use a function to call the backend server.
 document
   .getElementById("userInputForm")
   .addEventListener("click", displayTwentyPics);
 
-let baseUrl = `http://localhost:3000`;
+let baseUrl = `https://project-free99.herokuapp.com/`;
 
 //just testing
 // fetch(`${baseUrl}/test`)
@@ -28,8 +56,8 @@ function displayTwentyPics(e) {
     card.setAttribute("style", "width: 18rem");
 
     card.innerHTML = `<div class="card-body">
-      <img class="card-img-top" src=${destinationDB[index].photo}}>
-          <h4> ${destinationDB[index].location}</h4>
+      <img class="card-img-top" src=${destDataBase[index].photo}}>
+          <h4> ${destDataBase[index].location}</h4>
           <a href="#" btn_type="edit_btn" class="btn btn_bright btn-warning" uniqueID="${destDataBase[index].id} ">Like</a>
           <a href="#" btn_type="delete_btn" class="btn  btn_bright btn-danger" uniqueID= "${destDataBase[index].id} ">Dislike</a>
           </div>`;
