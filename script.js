@@ -9,7 +9,7 @@ async function submitPhotos(e) {
     const userInputDestination = document.getElementById("destination").value;
     const userInputLocation = document.getElementById("location").value;
 
-    const response = await fetch(`${baseUrl}/put20pictures`, {
+    const response = await fetch(`${baseUrl}/putPictures`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -26,7 +26,7 @@ async function getLocation() {
 
     let locationArray = []
 
-    let response = await fetch(`${baseUrl}/display20pictures`)
+    let response = await fetch(`${baseUrl}/getPictures`)
     let pictures = await response.json()
     locationArray = pictures
     return locationArray
