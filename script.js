@@ -1,4 +1,4 @@
-document.getElementById("myBtn").addEventListener("click", initialPhotos);
+document.getElementById("myBtn").addEventListener("click", submitPhotos);
 
 function reloadPictures() {
   e.preventDefault();
@@ -11,7 +11,7 @@ function reloadPictures() {
 const baseUrl = `https://project-free99.herokuapp.com`;
 
 //this will display 20 pictures based on the user input
-async function initialPhotos(e) {
+async function submitPhotos(e) {
   e.preventDefault();
 
   const userInputDestination = document.getElementById("destination").value;
@@ -39,12 +39,13 @@ function displayPictures(e) {
     .then((pictures) => {
       console.log(pictures);
       //displaying all the pictures
-      for (let i = 0; i < pictures.length; i++) {
-        const card = document.createElement("div");
+      const card = document.createElement("div");
+      const uList = document.createElement("ul");
 
-        card.classList.add("card");
-        card.innerHTML = `
-            <div class="card-body row">
+      for (let i = 0; i < pictures.length; i++) {
+       const List = document.createElement("li");
+       List.innerHTML = `
+            <div class="card">
             <img class="card-img-top" src=${pictures[i].picture}>
               <h5 class="card-title">${pictures[i].destination}</h5>
               <p class="card-text">${pictures[i].location}</p>
@@ -52,46 +53,24 @@ function displayPictures(e) {
       <a href="#" btn_type="delete_btn" class="btn btn-danger" uniqueID= "${pictures[i].id} ">Dislike</a>
             </div>
           `;
-        document.getElementById("second_container").appendChild(card);
+        uList.appendChild(List);
       }
+      card.appendChild(uList);
+      document.getElementById("second_container").appendChild(card);
     });
 }
 
-//make a submit function that displays 20 pictures to the user. that sohul be displayed on the second page
-function displayTwentyPics(e) {
-  e.preventDefault();
-
-  fetch(`${baseUrl}/display20`)
-    .then((response) => response.json())
-    .then((pictures) => {
-      console.log(pictures);
-    });
-
-  for (let i = 0; i < 20; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.setAttribute("style", "width: 18rem");
-
-    card.innerHTML = `<div class="card-body">
-      <img class="card-img-top" src=${destDataBase[index].photo}}>
-          <h4> ${destDataBase[index].location}</h4>
-          <a href="#" btn_type="edit_btn" class="btn btn_bright btn-warning" uniqueID="${destDataBase[index].id} ">Like</a>
-          <a href="#" btn_type="delete_btn" class="btn  btn_bright btn-danger" uniqueID= "${destDataBase[index].id} ">Dislike</a>
-          </div>`;
-
-    document.getElementById("second_container").appendChild(card);
-  }
-  //   resetForm();
-}
 
 //make a function that keep traks of the like and dislikes. all the like photos should be added to the firstReviewLikes collection
-function likeDislikeTracker() {}
+function likeDislikeTracker() {
 
+}
+
+document.getElementById("Like").addEventListener("click", zeroToFivePics);
 //make a function that puts 0-5 photos in the third page, and should be added to the secondReviewLikes collection
-function zeroToFivePics() {}
-
-//make a function that displays the last image chosen
-function selectedLastPic() {}
+function zeroToFivePics() {
+  document.create
+}
 
 //this is where we call initial POST from our backend
 async function addInitialCards(e) {
