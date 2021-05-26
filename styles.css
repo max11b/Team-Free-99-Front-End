@@ -21,6 +21,11 @@ body {
   height: 100%;
 }
 
+.display-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .fluid_container {
   padding: 0 15px;
   margin: 0 auto;
