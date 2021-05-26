@@ -71,7 +71,7 @@ body {
   animation-name: flipInY;
 }
 
-#first_container {
+#outter_container {
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -226,7 +226,7 @@ label {
   line-height: 0;
 }
 
-/* Card requires some animations f */
+/* Card requires some animations f
 .card {
   width: 150px;
   height: 200px;
@@ -265,13 +265,13 @@ label {
   animation: dislike 0.8s ease-out;
 }
 
-.list .cardSelection {
+.list .card {
   display: none;
 }
 
-.list .currentSelection {
+.list .current {
   display: block;
-}
+} */
 /* video #waVid {
   position: fixed;
   top: 50%;
