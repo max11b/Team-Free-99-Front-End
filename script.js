@@ -78,9 +78,13 @@ document.getElementById("second_container").addEventListener("click", likeOrDisl
 
 function likeOrDislike(e) {
     const element = e.target
-    if (Element.getAttributes("btn_type") == "like") {
-        console.log("like")
-        document.getElementById(third_contaier).appendChild(e.parentElement.parentElement)
+    if (element.getAttribute("btn_type") == "like") {
+        const likedPicture = element.parentElement.parentElement
+        document.getElementById("third_container").appendChild(likedPicture)
+    }
+    else if (element.getAttribute("btn_type") == "dislike") {
+        const dislikedPicture = element.parentElement.parentElement
+        dislikedPicture.remove()
     }
 }
 
@@ -89,8 +93,5 @@ function resetForm() {
     document.getElementById("location").value = "";
 }
 
-function deleteCard(btn) {
-    btn.parentElement.parentElement.remove();
-}
 
 
