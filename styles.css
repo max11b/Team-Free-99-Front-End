@@ -221,11 +221,51 @@ label {
   line-height: 0;
 }
 
+/* Card requires some animations f */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #4b7edd;
+  width: 150px;
+  height: 200px;
+  display: block;
+  background: #666;
+  transform-origin: 50% 99%;
+}
+
+@keyframes like {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes dislike {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+.secondContainer.like .cardSelection {
+  animation: like 0.8s ease-out;
+}
+
+.secondContainer.dislike .cardSelection {
+  animation: dislike 0.8s ease-out;
+}
+
+.list .cardSelection {
+  display: none;
+}
+
+.list .currentSelection {
+  display: block;
 }
 /* video #waVid {
   position: fixed;
