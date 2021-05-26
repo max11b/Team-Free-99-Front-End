@@ -157,3 +157,5 @@ function handleEdit(e) {
     oldPhoto.setAttribute("src", newPhoto);
   }
 }
+
+
