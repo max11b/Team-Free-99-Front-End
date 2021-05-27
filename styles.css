@@ -30,7 +30,8 @@ body {
   line-height: 1 !important;
   font-weight: bold !important;
   align-items: center !important;
-  width: 100%;
+  height: 25rem;
+  width: auto;
   font-size: 20px;
   color: rgb(233, 139, 16);
   background-color: rgb(97, 109, 46);
@@ -112,7 +113,7 @@ body {
 }
 
 .fixed_height {
-  height: 50rem;
+  height: 25rem;
   width: auto;
 }
 
@@ -217,7 +218,6 @@ img.animated_gif {
 }
 #second_container {
   width: 100vw;
-  overflow-x: scroll;
 }
 
 .relative_position {

@@ -59,11 +59,11 @@ async function createCards() {
 
   for (let i = 0; i < currentArray.length; i++) {
     const pictureList = document.createElement("li");
+    pictureList.classList.add("half_block_2", "card")
     if (i === 0) {
       pictureList.classList.add("top_card");
     }
     pictureList.innerHTML = `
-    <div class="card ">
     <h4 class="card-title">Destinations</h4>
     <img class="card-img-top fixed_height" src=${currentArray[i].picture}>
       <h5 class="card-title" id="final_dest">${currentArray[i].destination}</h5>
@@ -71,7 +71,6 @@ async function createCards() {
  
       <a href="#" btn_type="like" class="btn btn_bright padding_margin btn-floating btn-large  pulse" uniqueID="${currentArray[i]._id}">Like</a>
       <a href="#" btn_type="dislike" class="btn btn-danger padding_margin btn-floating btn-large pulse" uniqueID="diskile-btn-${currentArray[i]._id}">Dislike</a>
-</div>
   `;
     uList.appendChild(pictureList);
   }
@@ -126,10 +125,10 @@ async function likeOrDislike(e) {
 }
 
 function reshuffle_cards(e) {
-  e.target.parentElement.parentElement.parentElement.children[1].classList.add(
+  e.target.parentElement.remove();
+  e.target.parentElement.parentElement.children[1].classList.add(
     "top_card"
   );
-  e.target.parentElement.parentElement.remove();
 }
 
 function resetForm() {
@@ -151,9 +150,9 @@ async function likeToList(destination, location, recommendationURL) {
   liList.classList.add("display_createCards_list");
 
   const travelAdvisor = document.createElement("li");
-  travelAdvisor.innerHTML = `<div class="half_block_2"><h1 class="pt_5 mt_5 mb_4 lh1 fw_bold">See your recommended to do!</h1><p class="pt_5 mt_5 mb_4 lh1 fw_bold ">${destination}</p>
-  <p class="pt_5 mt_5 mb_4 lh1 fw_bold "> ${location}</p>
-    <a href="${recommendationURL}" btn_type="like" class="btn btn_bright padding_margin" target="_blank "> <i class="medium material-icons right">send</i> Travel Advisor</a></div>
+  travelAdvisor.innerHTML = `<li class="pt_5 mt_5 mb_4 lh1 fw_bold">See your recommended to do!</li><li class="pt_5 mt_5 mb_4 lh1 fw_bold ">${destination}</li>
+  <li class="pt_5 mt_5 mb_4 lh1 fw_bold "> ${location}</li>
+    <a href="${recommendationURL}" btn_type="like" class="btn btn_bright padding_margin" target="_blank "> <i class="medium material-icons right">send</i> Travel Advisor</a>
 `;
   liList.appendChild(travelAdvisor);
 
