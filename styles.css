@@ -21,6 +21,20 @@ body {
   height: 100%;
 }
 
+.display_createCards_list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem !important;
+  padding-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1 !important;
+  font-weight: bold !important;
+  align-items: center !important;
+  width: 100%;
+
+  font-size: 20px;
+}
+
 .display-flex-row {
   display: flex;
   flex-direction: row;
