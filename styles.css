@@ -26,13 +26,16 @@ body {
   flex-direction: row;
   margin-top: 3rem !important;
   padding-top: 3rem !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 2rem !important;
   line-height: 1 !important;
   font-weight: bold !important;
   align-items: center !important;
   width: 100%;
-
   font-size: 20px;
+  color: rgb(233, 139, 16);
+  background-color: rgb(97, 109, 46);
+  border-color: #ffffff;
+  list-style-type: none;
 }
 
 .display-flex-row {
@@ -45,8 +48,14 @@ body {
   font-weight: bold !important;
   align-items: center !important;
   width: 100%;
-
+  list-style-type: none;
   font-size: 20px;
+}
+
+.padding_margin {
+  margin-bottom: 1.24rem;
+  margin-top: 0.25;
+  padding-top: 1rem;
 }
 
 /* @media (max-width: 800px) {
@@ -58,6 +67,7 @@ body {
 .fluid_container {
   padding: 0 15px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .d_grid {
@@ -99,6 +109,23 @@ body {
   margin: 0 -15px;
   background-position: center center;
   background-size: cover;
+}
+
+.fixed_height {
+  height: 50rem;
+  width: auto;
+}
+
+.half_block_2 {
+  margin: 1rem;
+  background-position: center center;
+  background-size: cover;
+  left: 0;
+  position: absolute;
+}
+
+.top_card {
+  z-index: 100;
 }
 
 .flipInY {
@@ -189,12 +216,37 @@ img.animated_gif {
   top: 0%;
 }
 #second_container {
-  color: rgb(233, 139, 16);
-  display: flex;
   width: 100vw;
-  height: 100vh;
+  overflow-x: scroll;
 }
 
+.relative_position {
+  position: relative;
+}
+
+#cards_container {
+  color: rgb(233, 139, 16);
+  display: flex;
+  width: fit-content;
+  height: 100vh;
+}
+.second_card_container {
+  -moz-column-width: 23rem;
+  -webkit-column-width: 23rem;
+  -moz-column-gap: 1rem;
+  -webkit-column-gap: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+.card_size {
+  display: inline-block;
+  width: 100%;
+}
+
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 #third_container {
   color: rgb(233, 139, 16);
   display: flex;
