@@ -93,41 +93,30 @@ document
   .getElementById("second_container")
   .addEventListener("click", likeOrDislike);
 
-function getID() {
-  console.log(this._id);
-  return this._id;
-}
-
 async function likeOrDislike(e) {
-  // document
-  console.log("likeOrDislike(e): document: " + document);
-
-  // e
-  console.log("likeOrDislike(e): e: " + e);
-
-  // Print values of element
-  const element = e.target;
-  console.log("likeOrDislike(e): element: " + element);
-
   // Check element
-  if (element.getAttribute("btn_type") == "like") {
-    // likedPicture
-    // const likedPicture = element.parentElement.parentElement;
-    let currentArray = await getLocation();
-    console.log("likeOrDislike(e): currentArray: ");
-    console.log(currentArray);
-    console.log(currentArray[2].destination);
-    const likedPicture = element.parentElement.parentElement;
-    console.log("likeOrDislike(e): likedPicture: " + likedPicture);
+  if (e.target.getAttribute("btn_type") == "like") {
+    const likedDestination = e.target.parentElement.children[2].innerText;
+    const likedLocation = e.target.parentElement.children[3].innerText;
 
-    likeToList(likedPicture);
+    // We need to call API. Async and await
+    const recommendationURL = await fetch(`${baseUrl}/finalReview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        destination: likedDestination,
+        location: likedLocation,
+      }),
+    });
+    const data = await recommendationURL.json();
+
+    likeToList(likedDestination, likedLocation, recommendationURL);
   } else if (element.getAttribute("btn_type") == "dislike") {
     console.log(
       'likeOrDislike(e): element.getAttribute("btn_type") == "dislike"'
     );
-    //   const dislikedPicture = element.parentElement.parentElement;
-    //   dislikedPicture.remove();
   }
+  resetForm();
 }
 
 function resetForm() {
@@ -135,32 +124,18 @@ function resetForm() {
   document.getElementById("location").value = "";
 }
 
+//checks if like or dislike button is clicked
+document
+  .getElementById("third_container")
+  .addEventListener("click", likeToList);
+
 // this will grab the liked cards and into a list with travel advisor hyperlink
-function likeToList(picture) {
-  console.log("likeToList(picture): picture: " + picture.innerHTML);
-
-  result = picture.innerHTML.toString().substring(229, 236);
-  console.log("likeToList(picture): result: " + result);
-
-  //resets the container
-  document.getElementById("third_container").innerHTML = "";
-
-  const card = document.createElement("div");
+function likeToList(destination, location, recommendationURL) {
+  const card = document.createElement("ul");
   const liList = document.createElement("li");
+  liList.innerText = destination;
   liList.classList.add("display_createCards_list");
 
-  for (let i = 0; i < 1; i++) {
-    const cardList = document.createElement("li");
-
-    // This displays the new list from createCards
-    cardList.innerHTML =
-      // <div class="collection with-header">
-      // <li class="collection-header"><h1>Destinations List</h1></li>
-      `<li class="collection-item"><div>${result}<i class="material-icons">send</i></div></li>
-      </div>
-    `;
-    liList.appendChild(cardList);
-  }
   card.appendChild(liList);
   document.getElementById("third_container").appendChild(card);
 }
