@@ -48,9 +48,6 @@ async function postLikePictures() {
 async function createCards() {
   //
   let currentArray = await getLocation();
-  console.log("createCards(): currentArray: ");
-  console.log(currentArray);
-  console.log(currentArray[2].destination);
 
   //resets the container
   document.getElementById("second_container").innerHTML = "";
@@ -65,7 +62,7 @@ async function createCards() {
     <div class="card">
     <h4 class="card-title">Destinations</h4>
     <img class="card-img-top" src=${currentArray[i].picture}>
-      <h5 class="card-title" id="turd_dest">${currentArray[i].destination}</h5>
+      <h5 class="card-title" id="final_dest">${currentArray[i].destination}</h5>
       <p class="card-text">${currentArray[i].location}</p>
       <a href="#" btn_type="like" class="btn btn_bright" uniqueID="${currentArray[i]._id}">Like</a>
       <a href="#" btn_type="dislike" class="btn btn-danger" uniqueID="diskile-btn-${currentArray[i]._id}">Dislike</a>
@@ -109,12 +106,18 @@ async function likeOrDislike(e) {
       }),
     });
     const data = await recommendationURL.json();
+    //need to make json to string
+    urlString = JSON.stringify(data)
 
-    likeToList(likedDestination, likedLocation, recommendationURL);
-  } else if (element.getAttribute("btn_type") == "dislike") {
-    console.log(
-      'likeOrDislike(e): element.getAttribute("btn_type") == "dislike"'
-    );
+    //needed this to get rid of the 'recommendation' string and the curly brackets
+    urlString = urlString.substring(19, urlString.length - 2)
+
+    likeToList(likedDestination, likedLocation, urlString);
+    e.target.parentElement.parentElement.remove()
+
+  }
+  else if (e.target.getAttribute("btn_type") == "dislike") {
+    e.target.parentElement.parentElement.remove()
   }
   resetForm();
 }
@@ -125,15 +128,15 @@ function resetForm() {
 }
 
 //checks if like or dislike button is clicked
-document
-  .getElementById("third_container")
-  .addEventListener("click", likeToList);
+// document
+//   .getElementById("third_container")
+//   .addEventListener("click", likeToList);
 
 // this will grab the liked cards and into a list with travel advisor hyperlink
-function likeToList(destination, location, recommendationURL) {
+async function likeToList(destination, location, recommendationURL) {
   const card = document.createElement("ul");
   const liList = document.createElement("li");
-  liList.innerText = destination;
+  liList.innerText = `${destination}, ${location}, ${recommendationURL}`;
   liList.classList.add("display_createCards_list");
 
   card.appendChild(liList);
