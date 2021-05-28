@@ -59,7 +59,7 @@ async function createCards() {
 
   for (let i = 0; i < currentArray.length; i++) {
     const pictureList = document.createElement("li");
-    pictureList.classList.add("half_block_2", "card")
+    pictureList.classList.add("half_block_2", "card");
     if (i === 0) {
       pictureList.classList.add("top_card");
     }
@@ -126,9 +126,7 @@ async function likeOrDislike(e) {
 
 function reshuffle_cards(e) {
   e.target.parentElement.remove();
-  e.target.parentElement.parentElement.children[1].classList.add(
-    "top_card"
-  );
+  e.target.parentElement.parentElement.children[1].classList.add("top_card");
 }
 
 function resetForm() {
