@@ -1,6 +1,6 @@
 document.getElementById("myBtn").addEventListener("click", submitPhotos);
 
-const baseUrl = `http://localhost:3000`;
+const baseUrl = `https://project-free99.herokuapp.com`;
 
 //this will add data to our database to be loaded later
 async function submitPhotos(e) {
