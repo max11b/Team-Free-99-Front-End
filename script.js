@@ -1,6 +1,6 @@
 document.getElementById("myBtn").addEventListener("click", submitPhotos);
 
-const baseUrl = `https://project-free99.herokuapp.com`;
+const baseUrl = `http://localhost:3000`;
 
 //this will add data to our database to be loaded later
 async function submitPhotos(e) {
@@ -150,8 +150,8 @@ async function likeToList(destination, location, recommendationURL) {
   liList.classList.add("display_createCards_list");
 
   const travelAdvisor = document.createElement("li");
-  travelAdvisor.innerHTML = `<li class="pt_5 mt_5 mb_4 lh1 fw_bold">See your recommended to do!</li><li class="pt_5 mt_5 mb_4 lh1 fw_bold ">${destination}</li>
-  <li class="pt_5 mt_5 mb_4 lh1 fw_bold "> ${location}</li>
+  travelAdvisor.innerHTML = `<li class="line_size fw_bold margin">Recommendations!</li><li class="fw_bold margin">${destination}</li>
+  <li class="lh1 fw_bold margin"> ${location}</li>
     <a href="${recommendationURL}" btn_type="like" class="btn btn_bright padding_margin" target="_blank "> <i class="medium material-icons right">send</i> Travel Advisor</a>
 `;
   liList.appendChild(travelAdvisor);
