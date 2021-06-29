@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Bootstrap -->
     <link
       rel="stylesheet"
@@ -11,11 +12,20 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+
+    <!-- Materialize icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
     <!-- CSS file -->
     <link rel="stylesheet" href="./styles.css" />
+
     <!-- Title for our website name -->
-    <title>Team Free 99</title>
+    <title>Travel Recommendation App</title>
   </head>
+
   <!-- Body needs to have a shortcut to Colorzilla as an extension/add-on. Reference: https://twitter.com/brianpemberton/status/201455628143689728  -->
   <body cz-shortcut-listen="true">
     <!-- Title of the page needs to be in the center and container in order to leave no white space on the webpage -->
@@ -31,6 +41,7 @@
         tofade
       "
     >
+      <!-- image needs to be flex and shrank to fit on the right hand side of the webpage -->
       <div class="flex_shrink_0">
         <img
           class="animated_gif"
@@ -43,19 +54,27 @@
       </div>
     </div>
     <section class="fluid_container">
-      <div id="first_container">
+      <div id="outter_container" class="half_block totop_wrapper fadeInUp">
         <div class="panel container align_items_center" id="form_container">
           <form action="" id="userInputForm">
-            <label for="destination" class="btn btn_bright">Destination</label>
+            <label for="destination" class="btn btn_bright fw_bold"
+              >Destination
+             </label
+            >
+            <p class="tooltip"> <span class="tooltiptext">Enter City and State/Country</span></p>
             <input
               required
               minlength="2"
               type="text"
               id="destination"
-              name="name"
+              name="destination"
               placeholder="Enter the name of the destination"
             />
-            <label for="location" class="btn btn_bright">Location</label>
+            
+
+            <label for="location" class="btn btn_bright fw_bold"
+              >Location</label
+            >
             <input
               required
               minlength="2"
@@ -64,56 +83,39 @@
               name="location"
               placeholder="Where is it located"
             />
-            <button type="submit" id="myBtn" class="btn btn_light">
-              Find your next destination
+
+            <button type="click" id="myBtn" class="btn btn_light fw_bold">
+              Put it in your list
+            </button>
+            <button type="click" id="done" class="btn btn_light fw_bold">
+              <a onclick="location.href='#second_container'">See Your List</a>
+              <br />
+              <i class="large material-icons right">send</i>
             </button>
           </form>
         </div>
       </div>
     </section>
-    <section class="tofade animated fadInUp">
-      <div
-        class="text-center panel container half_block animated flipInY"
-        id="second_container"
-      >
-        <div id="title">
-          <h1 class="pt_5 mt_5 mb_4 lh_1 fw_bold align_items_center">
-            Here are your top destinations
-          </h1>
-        </div>
-        <div id="second_container">
-          <div id="list_1"></div>
+    <section class="tofade animated fadInUp fluid_container row-1">
+      <div class="row half_block">
+        <div
+          class="text-center panel container animated flipInY"
+          id="second_container"
+        >
+          
+            <div id="cards_container"></div>
+         
         </div>
       </div>
+    </section>
+    <section>
       <div>
         <div
           class="text-center panel container half_block animated flipInY"
           id="third_container"
         >
-          <div id="title">
-            <h1 class="pt_5 mt_5 mb_4 lh_1 fw_bold">
-              Select your favorite destinations
-            </h1>
-          </div>
           <div id="third_card_container form_container">
-            <div id="list_2"></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div
-          class="text-center panel container half_block animated flipInY"
-          id="final_container"
-        >
-          <div id="title">
-            <h1 class="pt_5 mt_5 mb_4 lh_1 fw_bold">
-              Your destination awaits
-              <br />
-              Please select one location
-            </h1>
-          </div>
-          <div id="final_card_container form_container">
-            <div id="list_3"></div>
+                </div>
           </div>
         </div>
       </div>

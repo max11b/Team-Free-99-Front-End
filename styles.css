@@ -1,3 +1,6 @@
+/* This allows us to have consistent font (size, family, weight), line height with a consistent background image. */
+
+/* scroll allows end user to scroll through our website */
 html,
 body {
   height: 100%;
@@ -5,7 +8,10 @@ body {
   line-height: 1.6;
   font-family: "brandon_grotesque_regularRg";
   font-weight: normal;
-  background-image: url("https://images.unsplash.com/photo-1599551528722-6b6d968512a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1599551528722-6b6d968512a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"); */
+  background: url("https://images.unsplash.com/photo-1599551528722-6b6d968512a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+    no-repeat center fixed;
+  background-size: cover;
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
 }
@@ -18,9 +24,52 @@ body {
   height: 100%;
 }
 
+.display_createCards_list {
+  flex-direction: row;
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+  line-height: 1 !important;
+  font-weight: bold !important;
+  align-items: center !important;
+  height: 15rem;
+  width: auto;
+  font-size: 20px;
+  color: rgb(233, 139, 16);
+  background-color: rgb(97, 109, 46);
+  border-color: #ffffff;
+  list-style-type: none;
+  border-radius: 5px;
+}
+
+.display-flex-row {
+  flex-direction: row;
+  margin-top: 3rem !important;
+  padding-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1 !important;
+  font-weight: bold !important;
+  align-items: center !important;
+  width: 100%;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.padding_margin {
+  margin-bottom: 1.24rem;
+  margin-top: 0.25;
+  padding-top: 1rem;
+}
+
+/* @media (max-width: 800px) {
+  .display-flex-row {
+    flex-direction: column;
+  }
+} */
+
 .fluid_container {
   padding: 0 15px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .d_grid {
@@ -35,7 +84,13 @@ body {
   align-items: center !important;
 }
 
+.totop_wrapper {
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.2s;
+}
 .animated {
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-fill-mode: both;
   animation-duration: 0.8s;
   animation-fill-mode: both;
 }
@@ -58,16 +113,36 @@ body {
   background-size: cover;
 }
 
+.fixed_height {
+  height: 25rem;
+  width: auto;
+}
+
+.half_block_2 {
+  margin: 1rem;
+  background-position: center center;
+  background-size: cover;
+  left: 0;
+  position: absolute;
+}
+
+.top_card {
+  z-index: 100;
+}
+
 .flipInY {
   backface-visibility: visible !important;
   animation-name: flipInY;
 }
 
-#first_container {
+#outter_container {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://images.unsplash.com/photo-1533422902779-aff35862e462?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1533422902779-aff35862e462?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"); */
+  background: url("https://images.unsplash.com/photo-1533422902779-aff35862e462?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+    no-repeat center fixed;
+  background-size: cover;
 }
 
 img.animated_gif {
@@ -100,9 +175,18 @@ img.animated_gif {
   font-weight: 700 !important;
 }
 
+.line_size {
+  font-size: 25px;
+}
+
+.margin {
+  padding-top: 1rem;
+  margin: 1rem;
+}
+
 .panel {
   margin: 20px;
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 
@@ -122,9 +206,10 @@ img.animated_gif {
 }
 
 .btn_light {
-  color: #01080e;
-  background-color: transparent;
+  color: rgb(233, 139, 16);
+  background-color: rgb(97, 109, 46);
   border-color: #ffffff;
+  /* background: #666; */
 }
 
 .btn_bright {
@@ -140,17 +225,68 @@ img.animated_gif {
   padding-right: 15px;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 #form_container {
   position: sticky;
   top: 0%;
 }
 #second_container {
-  color: rgb(233, 139, 16);
-  display: flex;
   width: 100vw;
-  height: 100vh;
 }
 
+.relative_position {
+  position: relative;
+}
+
+#cards_container {
+  color: rgb(233, 139, 16);
+  display: flex;
+  width: fit-content;
+  height: 100vh;
+}
+.second_card_container {
+  -moz-column-width: 23rem;
+  -webkit-column-width: 23rem;
+  -moz-column-gap: 1rem;
+  -webkit-column-gap: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+.card_size {
+  display: inline-block;
+  width: 100%;
+}
+
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 #third_container {
   color: rgb(233, 139, 16);
   display: flex;
@@ -199,6 +335,72 @@ label {
   background-color: teal;
 }
 
+.column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.container:before,
+.container:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.row:before,
+.row:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+/* Card requires some animations f
+.card {
+  width: 150px;
+  height: 200px;
+  display: block;
+  background: #666;
+  transform-origin: 50% 99%;
+}
+@keyframes like {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+@keyframes dislike {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+.secondContainer.like .cardSelection {
+  animation: like 0.8s ease-out;
+}
+.secondContainer.dislike .cardSelection {
+  animation: dislike 0.8s ease-out;
+}
+.list .card {
+  display: none;
+}
+.list .current {
+  display: block;
+} */
 /* video #waVid {
   position: fixed;
   top: 50%;

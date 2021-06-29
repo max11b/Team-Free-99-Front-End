@@ -1,161 +1,164 @@
-display20();
+document.getElementById("myBtn").addEventListener("click", submitPhotos);
 
-function display20() {
-  let url = `https://project-free99.herokuapp.com/display20`;
-  console.log(url);
-  fetch(url)
-    .then((response) => response.json())
-    .then((FIRST_TWENTY_heroku_list) => {
-      console.log(FIRST_TWENTY_heroku_list);
+const baseUrl = `https://project-free99.herokuapp.com`;
 
-      for (let index = 0; index < FIRST_TWENTY_heroku_list.length; index++) {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.setAttribute("style", "width: 18rem");
-
-        card.innerHTML = `<div class="card-body">
-  <img class="card-img-top" src=${FIRST_TWENTY_heroku_list[index].photo}}>
-      <h6>${FIRST_TWENTY_heroku_list[index].location}</h6>
-      <p class="card-text">${FIRST_TWENTY_heroku_list[index].description}</p>
-      <a href="#" btn_type="edit_btn" class="btn btn-warning" uniqueID="${FIRST_TWENTY_heroku_list[index].id} ">Like</a>
-      <a href="#" btn_type="delete_btn" class="btn btn-danger" uniqueID= "${FIRST_TWENTY_heroku_list[index].id} ">Dislike</a>
-    </div>
-`;
-        document.getElementById("second_container").appendChild(card);
-      }
-    });
-}
-
-// Use a function to call the backend server.
-document
-  .getElementById("userInputForm")
-  .addEventListener("click", displayTwentyPics);
-
-let baseUrl = `https://project-free99.herokuapp.com/`;
-
-//just testing
-// fetch(`${baseUrl}/test`)
-//     .then((response) => response.json())
-//     .then((pictures) => {
-//         console.log(pictures)
-//     })
-
-//make a submit function that displays 20 pictures to the user. that sohul be displayed on the second page
-function displayTwentyPics(e) {
+//this will add data to our database to be loaded later
+async function submitPhotos(e) {
   e.preventDefault();
 
-  fetch(`${baseUrl}/display20`)
-    .then((response) => response.json())
-    .then((pictures) => {
-      console.log(pictures);
-    });
+  const userInputDestination = document.getElementById("destination").value;
+  const userInputLocation = document.getElementById("location").value;
 
-  for (let i = 0; i < 20; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.setAttribute("style", "width: 18rem");
-
-    card.innerHTML = `<div class="card-body">
-      <img class="card-img-top" src=${destDataBase[index].photo}}>
-          <h4> ${destDataBase[index].location}</h4>
-          <a href="#" btn_type="edit_btn" class="btn btn_bright btn-warning" uniqueID="${destDataBase[index].id} ">Like</a>
-          <a href="#" btn_type="delete_btn" class="btn  btn_bright btn-danger" uniqueID= "${destDataBase[index].id} ">Dislike</a>
-          </div>`;
-
-    document.getElementById("second_container").appendChild(card);
-  }
-  //   resetForm();
-}
-
-//make a function that keep traks of the like and dislikes. all the like photos should be added to the firstReviewLikes collection
-function likeDislikeTracker() {}
-
-//make a function that puts 0-5 photos in the third page, and should be added to the secondReviewLikes collection
-function zeroToFivePics() {}
-
-//make a function that displays the last image chosen
-function selectedLastPic() {}
-
-//this is where we call initial POST from our backend
-async function addInitialCards(e) {
-  //keep it from refreshing
-  e.preventDefault();
-
-  const userDestinationInput = document.getElementById("destination").value;
-  const userLocationInput = document.getElementById("location").value;
-
-  const response = await fetch(`${baseUrl}/firstReview`, {
+  const response = await fetch(`${baseUrl}/putPictures`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      destination: userDestinationInput,
-      location: userLocationInput,
+      destination: userInputDestination,
+      location: userInputLocation,
     }),
   });
-  await response.json();
-  location.reload();
+  const data = await response.json();
+  resetForm();
 }
 
-function handleSubmit(e) {
+//gets the locaiton array from out API. initially none.
+async function getLocation() {
+  let locationArray = [];
+
+  let response = await fetch(`${baseUrl}/getPictures`);
+  let pictures = await response.json();
+  console.log("getLocation(): pictures: " + pictures);
+  locationArray = pictures;
+  return locationArray;
+}
+
+// Post Like Pictures
+async function postLikePictures() {
+  let picturesArray = [];
+
+  let response = await fetch(`${baseUrl}/likePictures`);
+  let pictures = await response.json();
+  picturesArray = pictures;
+
+  // Return
+  return picturesArray;
+}
+
+//create html element cards for the photo
+async function createCards() {
+  //
+  let currentArray = await getLocation();
+
+  //resets the container
+  document.getElementById("cards_container").innerHTML = "";
+
+  const card = document.createElement("div");
+  //   card.classList.add("second_card_container");
+  const uList = document.createElement("ul");
+  uList.classList.add("display-flex-row", "relative_position");
+
+  for (let i = 0; i < currentArray.length; i++) {
+    const pictureList = document.createElement("li");
+    pictureList.classList.add("half_block_2", "card");
+    if (i === 0) {
+      pictureList.classList.add("top_card");
+    }
+    pictureList.innerHTML = `
+    <h4 class="card-title">Destinations</h4>
+    <img class="card-img-top fixed_height" src=${currentArray[i].picture}>
+      <h5 class="card-title" id="final_dest">${currentArray[i].destination}</h5>
+      <p class="card-text">${currentArray[i].location}</p>
+ 
+      <a href="#" btn_type="like" class="btn btn_bright padding_margin btn-floating btn-large  pulse" uniqueID="${currentArray[i]._id}">Like</a>
+      <a href="#" btn_type="dislike" class="btn btn-danger padding_margin btn-floating btn-large pulse" uniqueID="diskile-btn-${currentArray[i]._id}">Dislike</a>
+  `;
+    uList.appendChild(pictureList);
+  }
+  card.appendChild(uList);
+  document.getElementById("cards_container").appendChild(card);
+}
+
+document.getElementById("done").addEventListener("click", displayPictures);
+
+//this will load all the photos submitted by the user
+async function displayPictures(e) {
   e.preventDefault();
 
-  const userDestinationInput = document.getElementById("destination").value;
-  const userLocationInput = document.getElementById("location").value;
-
-  //fetches backend api
-  fetch(url)
-    .then((response) => response.json())
-    .then((pictures) => addPictures(pictures.results));
+  console.log("submitted");
+  //   await getLocation();
+  createCards();
 }
 
-function addPictures(pictures) {
-  const random = Math.floor(Math.random() * pictures.length);
-  const photoURL = pictures[random].urls.thumb;
+//checks if like or dislike button is clicked
+document
+  .getElementById("cards_container")
+  .addEventListener("click", likeOrDislike);
 
-  const userDestinationInput = document.getElementById("destination").value;
-  const userLocationInput = document.getElementById("location").value;
+async function likeOrDislike(e) {
+  // Check element
+  if (e.target.getAttribute("btn_type") == "like") {
+    const likedDestination = e.target.parentElement.children[2].innerText;
+    const likedLocation = e.target.parentElement.children[3].innerText;
 
-  document.createElement("div").classList.add("card");
+    // We need to call API. Async and await
+    const recommendationURL = await fetch(`${baseUrl}/finalReview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        destination: likedDestination,
+        location: likedLocation,
+      }),
+    });
+    const data = await recommendationURL.json();
+    //need to make json to string
+    urlString = JSON.stringify(data);
 
-  document.createElement("div").innerHTML = `
-    <div class="card-body">
-    <img class="card-img-top" src =${photoURL}>
-        <h5 class="card-title">${userDestinationInput}</h5>
-        <p class="card-text">${userLocationInput}</p>
-    </div>`;
+    //needed this to get rid of the 'recommendation' string and the curly brackets
+    urlString = urlString.substring(19, urlString.length - 2);
+
+    likeToList(likedDestination, likedLocation, urlString);
+    reshuffle_cards(e);
+  } else if (e.target.getAttribute("btn_type") == "dislike") {
+    reshuffle_cards(e);
+  }
+  resetForm();
+}
+
+function reshuffle_cards(e) {
+  e.target.parentElement.remove();
+  e.target.parentElement.parentElement.children[1].classList.add("top_card");
 }
 
 function resetForm() {
   document.getElementById("destination").value = "";
   document.getElementById("location").value = "";
-  document.getElementById("photo").value = "";
 }
 
-function deleteCard(btn) {
-  btn.parentElement.parentElement.remove();
+//checks if like or dislike button is clicked
+// document
+//   .getElementById("third_container")
+//   .addEventListener("click", likeToList);
+
+// this will grab the liked cards and into a list with travel advisor hyperlink
+async function likeToList(destination, location, recommendationURL) {
+  const card = document.createElement("ul");
+
+  const liList = document.createElement("li");
+  //   liList.innerText = `${destination}, ${location}`;
+  liList.classList.add("display_createCards_list");
+
+  const travelAdvisor = document.createElement("li");
+  travelAdvisor.innerHTML = `<li class="line_size fw_bold margin">Recommendations!</li><li class="fw_bold margin">${destination}</li>
+  <li class="lh1 fw_bold margin"> ${location}</li>
+    <a href="${recommendationURL}" btn_type="like" class="btn btn_bright padding_margin" target="_blank "> <i class="medium material-icons right">send</i> Travel Advisor</a>
+`;
+  liList.appendChild(travelAdvisor);
+
+  card.appendChild(liList);
+  document.getElementById("third_container").appendChild(card);
 }
 
-function handleEdit(e) {
-  const oldDestination = e.parentElement.children[0];
-  const oldLocation = e.parentElement.children[1];
-
-  const oldPhoto = e.parentElement.parentElement.children[0];
-
-  const newDestination = prompt("New Destination", oldDestination.innerText);
-  const newLocation = prompt("New Location", oldLocation.innerText);
-  const newPhoto = promt("New Photo", oldPhoto.getAttribute("src"));
-
-  if (newDestination !== "") {
-    oldLocation.innerText = newDestination;
-  }
-
-  if (newLocation !== "") {
-    oldLocation.innerText = newLocation;
-  }
-
-  if (newPhoto !== "") {
-    oldPhoto.setAttribute("src", newPhoto);
-  }
-}
-
-
+//checks if click button hyperlink is clicked
+document
+  .getElementById("third_container")
+  .addEventListener("click", likeOrDislike);
